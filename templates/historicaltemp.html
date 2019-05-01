@@ -88,8 +88,9 @@
   <div class="w3-card-4" style="width:70%;">
 
     <div class="w3-container">
-      <img src="{{ images[i] }}" alt="Avatar" class="w3-left w3-round w3-margin-right w3-margin-top w3-margin-bottom" style="width:200px">
+      <img src="{{ images[i] }}" alt="Avatar" class="w3-round w3-margin-right w3-margin-left w3-margin-top w3-margin-bottom" style="width:200px">
       <h4>{{ names[i] }}</h4>
+      <h4>{{ states[i] }}</h4>
       <h4>{{ rates[i] }}</h4>
       <p class="w3-margin-top">{{ places[i] }}</p><br>
     </div>
@@ -103,12 +104,17 @@
 {% endblock %}
 </div>
 
+<!--@app.route("/historicplace", methods=['POST', 'GET'], defaults={'page' : 1, 'category' : None, 'state': None})
+@app.route("/historicplace/<int:page>", defaults={'category' : None, 'state': None})
+@app.route("/historicplace/<category>/page/<int:page>", defaults = {'state': None})
+@app.route("/historicplace/<state>/page/<int:page>", defaults = {'category': None})
+@app.route("/historicplace/<category>/<state>/page/<int:page>")-->
 
   <div class=pagination style="margin:auto;width:10%">
   {%- for page in pagination.iter_pages() %}
     {% if page %}
       {% if page != pagination.page %}
-        <a href="{{ url_for_other_page(page, category) }}">{{ page }}</a>
+        <a href="{{ url_for_other_page(page, category, state) }}">{{ page }}</a>
       {% else %}
         <strong>{{ page }}</strong>
       {% endif %}
@@ -117,7 +123,7 @@
     {% endif %}
   {%- endfor %}
   {% if pagination.has_next %}
-    <a href="{{ url_for_other_page(pagination.page + 1, category)
+    <a href="{{ url_for_other_page(pagination.page + 1, category, state)
       }}">Next &raquo;</a>
   {% endif %}
   </div>

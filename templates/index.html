@@ -73,6 +73,7 @@
 						<form action="{{ url_for('historicplace')}}" method="POST">
 						<label style="margin: 20px" for="category"><h5>1: Place Of Interest</h5></label><br>
                           <select id="category" name="category">
+                          <option value="all">All</option>
                           <option value="pilgrimage">Pilgrimage</option>
                           <option value="wildlife">Wildlife</option>
                           <option value="historical">Historical</option>
@@ -80,6 +81,7 @@
                         </select><br><br>
             <label style="margin: 20 px" for = "state"><h5> 2: State </h5> </label> <br>
                           <select id = "state" name = "state">
+                          <option value="all">All</option>
                           <option value="Rajasthan"> Rajasthan </option>
                           <option value="Sikkim"> Sikkim </option>
                           <option value="Kerala"> Kerala </option>
