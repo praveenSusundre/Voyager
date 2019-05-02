@@ -205,6 +205,7 @@ def placeinfo(placename):
     places1 = pd.read_json('places_final.json', orient='columns')
     file1 = places[places['place_name'] == placename]
     file2 = file1.sort_values('rating',ascending = False)
+
     for place in file2['place_info']:
         places = place
     for place in file2['place_image']:
@@ -216,13 +217,20 @@ def placeinfo(placename):
     for place in file2['city_name']:
         city = place
 
+
     same_city = places1[places1['city_name'] == city]
-    same_city1 = same_city.sort_values('rating',ascending = False)
+    same_city0 = same_city[same_city['place_name'] != placename]
+    same_city1 = same_city0.sort_values('rating',ascending = False)
+
+
     for place in same_city1['place_name']:
         name.append(place)
+    for place in same_city1['place_image']:
+        img.append(place)
+
 
     return render_template('moreinfo.html', rates = rates, places = places, images = images,
-                            names = names, city = city, same_city = name)
+                            names = names, city = city, same_city = name, image = img)
 
 if __name__ == "__main__":
     app.run(debug=True)

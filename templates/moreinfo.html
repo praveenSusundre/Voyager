@@ -80,9 +80,49 @@
         <hr>
         <div class="container">
         	<div class="row">
-        		<div>{{places}}{{same_city[1:4]}}</div>
+        		<div>{{places}}</div>
         	</div>
         </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="post-preview">
+
+            <h2 class="post-title">
+              Best Places to visit in <span style="text-transform: capitalize">{{city}}</span>
+            </h2>
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+    <div class="col-lg-4">
+    <div class="card">
+      <img class="card-img-top" src="{{image[1]}}" alt="Card image cap">
+      <div class="card-body">
+        <center><h3 class="card-title">{{same_city[1]}}</h3><a href="{{url_for('placeinfo', placename = same_city[1])}}" class="btn btn-primary btn-xs">Show More</a></center>
+      </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="card">
+      <img class="card-img-top" src="{{image[2]}}" alt="Card image cap">
+      <div class="card-body">
+        <center><h3 class="card-title">{{same_city[2]}}</h3><a href="{{url_for('placeinfo', placename = same_city[2])}}" class="btn btn-primary btn-xs">Show More</a></center>
+      </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="card">
+      <img class="card-img-top" src="{{image[3]}}" alt="Card image cap">
+      <div class="card-body">
+        <center><h3 class="card-title">{{same_city[3]}}</h3><a href="{{url_for('placeinfo', placename = same_city[3])}}" class="btn btn-primary btn-xs">Show More</a></center>
+      </div>
+    </div>
+    </div>
+    </div>
 
   {% endblock %}
   <!-- Footer -->
