@@ -98,10 +98,7 @@
 
         </div>
         <hr>
-        <br>
-        <br>
-        <br>
-        <br>
+
         <div class="container">
         	<div class="row">
         		<div>{{places}}</div>
@@ -112,6 +109,10 @@
         <div class="row">
 
         </div>
+        <br>
+        <br>
+        <br>
+
         <h2>Reviews</h2>
         <div class="row">
           <div class="col-lg-12">
@@ -119,7 +120,7 @@
     <div class="card card-something" >
 
       <div class="card-body ">
-        <center><h5 class=".card-titlereview">{{title[1].text}}</h5><p class="card-body">After creating such rules, we implement the code on the entire transactions table.Such dictionary creation not only are more accurate, they are much faster than manual process. Imagine a scenario that Wall Mart is written in the transactions as Wall Mt. Now, if we are trying to search “Wall mart” we will get no matches. But in our framework, we will catch this fact in the association step. Creating dictionary is more of an art than science. The more efforts you put while creating the dictionary, better will be accuracy while scoring.</p></center>
+        <center><h5 class=".card-titlereview">{{title[1].text}}</h5><p class="card-body">{{rev[1].text}}</p></center>
       </div>
     </div>
     </div>
@@ -129,7 +130,7 @@
     <div class="card card-something">
 
       <div class="card-body card-something">
-        <center><h5 class=".card-titlereview">{{title[2].text}}</h5><p class="card-body">After creating such rules, we implement the code on the entire transactions table.Such dictionary creation not only are more accurate, they are much faster than manual process. Imagine a scenario that Wall Mart is written in the transactions as Wall Mt. Now, if we are trying to search “Wall mart” we will get no matches. But in our framework, we will catch this fact in the association step. Creating dictionary is more of an art than science. The more efforts you put while creating the dictionary, better will be accuracy while scoring.</p></center>
+        <center><h5 class=".card-titlereview">{{title[2].text}}</h5><p class="card-body">{{rev[2].text}}</p></center>
       </div>
     </div>
     </div>
@@ -139,7 +140,7 @@
     <div class="card card-something">
 
       <div class="card-body">
-        <center><h5 class=".card-titlereview">{{title[3].text}}</h5><p class="card-body">After creating such rules, we implement the code on the entire transactions table.Such dictionary creation not only are more accurate, they are much faster than manual process. Imagine a scenario that Wall Mart is written in the transactions as Wall Mt. Now, if we are trying to search “Wall mart” we will get no matches. But in our framework, we will catch this fact in the association step. Creating dictionary is more of an art than science. The more efforts you put while creating the dictionary, better will be accuracy while scoring.</p></center>
+        <center><h5 class=".card-titlereview">{{title[3].text}}</h5><p class="card-body">{{rev[3].text}}</p></center>
       </div>
     </div>
     </div>
@@ -205,7 +206,7 @@
         <div class="row">
     <div class="col-lg-4">
     <div class="card" >
-      <img class="card-img-top" src="{{fetch_img(h_names[1]+' '+city)}}" alt="Card image cap">
+      <img class="card-img-top" src="{{url_for('static', filename = 'img/h_img1.jpg')}}" alt="Card image cap">
       <div class="card-body">
         <center><h3 class="card-title">{{h_names[1]}}</h3><a href="{{url_for('placeinfo', placename = same_city[1])}}" class="btn btn-primary btn-xs">Show More</a></center>
       </div>
@@ -213,7 +214,7 @@
     </div>
     <div class="col-lg-4">
     <div class="card">
-      <img class="card-img-top" src="{{fetch_img(h_names[2]+' '+city)}}" alt="Card image cap">
+      <img class="card-img-top" src="{{url_for('static', filename = 'img/h_img2.jpg')}}" alt="Card image cap">
       <div class="card-body">
         <center><h3 class="card-title">{{h_names[2]}}</h3><a href="{{url_for('placeinfo', placename = same_city[2])}}" class="btn btn-primary btn-xs">Show More</a></center>
       </div>
@@ -221,7 +222,7 @@
     </div>
     <div class="col-lg-4">
     <div class="card">
-      <img class="card-img-top" src="{{fetch_img(h_names[3]+' '+city)}}" alt="Card image cap" >
+      <img class="card-img-top" src="{{url_for('static', filename = 'img/h_img3.jpg')}}" alt="Card image cap" >
       <div class="card-body">
         <center><h3 class="card-title">{{h_names[3]}}</h3><a href="{{url_for('placeinfo', placename = same_city[3])}}" class="btn btn-primary btn-xs">Show More</a></center>
       </div>
