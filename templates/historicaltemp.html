@@ -48,6 +48,33 @@ span.stars, span.stars span {
 span.stars span {
     background-position: 0 0;
 }
+
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  text-align: center;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: rgba(20,20,20);
+  color: white;
+  border: 1px solid #f99e0;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 </style>
 
 </head>
@@ -79,12 +106,11 @@ span.stars span {
   </nav>
 
   <!-- Header -->
-  <header class="masthead">
+  <header class="masthead" style="height:400px">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
         <h1 class="mx-auto my-0 text-uppercase">{{category}} places</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
-        <a href="#about" class="btn btn-primary js-scroll-trigger">Dive Inside</a>
       </div>
     </div>
   </header>
@@ -103,10 +129,10 @@ span.stars span {
       <img src="{{ images[i] }}" alt="Avatar" class="w3-round w3-margin-right w3-margin-left w3-margin-top w3-margin-bottom" style="width:200px">
       <h4>{{ names[i] }}</h4>
       <h4>{{ states[i] }}</h4>
-      <h4>{{ rates[i] }}</h4>
+      <div class="jstars" data-value="{{rates[i]}}" data-color="#f99e01"></div>
       <p class="w3-margin-top">{{ places[i] }}</p><br>
     </div>
-    <a href="{{url_for('placeinfo', placename = names[i])}}"
+    <a href="{{url_for('placeinfo', placename = names[i])}}">
     <button class="w3-button w3-block w3-dark-grey">Show More</button></a>
 
   </div>
@@ -122,16 +148,16 @@ span.stars span {
 @app.route("/historicplace/<state>/page/<int:page>", defaults = {'category': None})
 @app.route("/historicplace/<category>/<state>/page/<int:page>")-->
 
-  <div class=pagination style="margin:auto;width:10%">
+  <div class="pagination" style="margin:auto;width:100%;background-color:#f9af02">
   {%- for page in pagination.iter_pages() %}
     {% if page %}
       {% if page != pagination.page %}
         <a href="{{ url_for_other_page(page, category, state) }}">{{ page }}</a>
       {% else %}
-        <strong>{{ page }}</strong>
+        <a class="active">{{ page }}</a>
       {% endif %}
     {% else %}
-      <span class=ellipsis>…</span>
+      <a class=ellipsis>…</a>
     {% endif %}
   {%- endfor %}
   {% if pagination.has_next %}
@@ -159,7 +185,7 @@ span.stars span {
   <!-- Custom scripts for this template -->
   <script src="{{url_for('static', filename='js/grayscale.min.js')}}"></script>
 
-  <script src="{{url_for('static', filename='js/rating.js')}}"></script>
+  <script src="{{url_for('static', filename='js/jstars.js')}}"></script>
 
 </body>
 

@@ -21,6 +21,18 @@
   <!-- Custom styles for this template -->
   <link href="{{ url_for('static', filename='css/grayscale.min.css')}}" rel="stylesheet">
 
+  <style>
+  .questhead h1 {
+    font-family: 'Varela Round';
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    letter-spacing: 0.8rem;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  </style>
+
 </head>
 
 <body id="page-top">
@@ -61,42 +73,9 @@
   </header>
 
   <!-- About Section -->
-  <div class="fh5co-hero" id="about">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5"
-      style="background-image: url({{ url_for('static', filename='img/')}})">
-				<div class="desc animate-box" style="padding-top: 1%">
-					<h2>QUESTIONNAIRE</h2>
-
-					<div class="container" style="text-align: center; padding-left: 20.75% ; padding-bottom: 2%">
-						<div style="border-radius: 5px; background-color: #f2f2f2; padding: 2%; width: 50%">
-						<form action="{{ url_for('historicplace')}}" method="POST">
-						<label style="margin: 20px" for="category"><h5>1: Place Of Interest</h5></label><br>
-                          <select id="category" name="category">
-                          <option value="all">All</option>
-                          <option value="pilgrimage">Pilgrimage</option>
-                          <option value="wildlife">Wildlife</option>
-                          <option value="historical">Historical</option>
-                          <option value="adventure">Adventure</option>
-                        </select><br><br>
-            <label style="margin: 20 px" for = "state"><h5> 2: State </h5> </label> <br>
-                          <select id = "state" name = "state">
-                          <option value="all">All</option>
-                          <option value="Rajasthan"> Rajasthan </option>
-                          <option value="Sikkim"> Sikkim </option>
-                          <option value="Kerala"> Kerala </option>
-                          <option value="Uttrakhand"> Uttrakhand </option></select>
-                          <br><br>
-                          <input type="submit" class="btn-info" value="predict">
-                        </form>
-          </div>
-					</div>
 
 
 
-				</div>
-			</div>
-		</div>
 
 
 
@@ -104,8 +83,32 @@
   <!-- Signup Section -->
   <section id="signup" class="signup-section">
     <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-lg-8 mx-auto text-center">
+      <div id = "about" class="row">
+        <div  class="questhead col-md-10 col-lg-8 mx-auto text-center">
+          <h1>QUESTIONNAIRE</h1>
+          <form action="{{ url_for('historicplace')}}" method="POST">
+          <label style="margin: 20px" for="category"><h5  class="text-white">1: Place Of Interest</h5></label><br>
+                        <select id="category" name="category">
+                        <option value="all">All</option>
+                        <option value="pilgrimage">Pilgrimage</option>
+                        <option value="wildlife">Wildlife</option>
+                        <option value="historical">Historical</option>
+                        <option value="adventure">Adventure</option>
+                      </select><br><br>
+          <label style="margin: 20 px" for = "state"><h5  class="text-white "> 2: State </h5> </label> <br>
+                        <select id = "state" name = "state">
+                        <option value="all">All</option>
+                        <option value="Rajasthan"> Rajasthan </option>
+                        <option value="Sikkim"> Sikkim </option>
+                        <option value="Kerala"> Kerala </option>
+                        <option value="Uttrakhand"> Uttrakhand </option></select>
+                        <br><br>
+                        <input type="submit" class="btn btn-primary btn-info" value="predict">
+                      </form>
+        <br>
+        <br>
+        <br>
+        <br>
 
           <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
           <h2 class="text-white mb-5">Subscribe to receive updates!</h2>

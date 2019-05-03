@@ -213,6 +213,35 @@ def historicplace(page, category, state):
                                     places = pl[start_index:end_index], images = img[start_index:end_index],
                                     names = names[start_index:end_index], pagination = pagination, category = category, state = state)
 
+    elif category != 'all' and state != 'all':
+
+            file1 = places[places['state_name'] == state]
+            file3 = file1[file1['category'] == category]
+            file2 = file3.sort_values('rating',ascending = False)
+            length = len(file2) #count
+            pagination = Pagination(page, PER_PAGE, length)
+
+            for place in file2['place_info']:
+                pl.append(place)
+            for place in file2['place_image']:
+                img.append(place)
+            for place in file2['place_name']:
+                names.append(place)
+            for place in file2['rating']:
+                rates.append(place)
+            for place in file2['state_name']:
+                states.append(place)
+
+            start_index = sender(page, length)
+            end_index = start_index + 10
+
+            if end_index > length:
+                end_index = length
+
+            return render_template('historicaltemp.html', states = states, rates = rates[start_index:end_index],
+                                    places = pl[start_index:end_index], images = img[start_index:end_index],
+                                    names = names[start_index:end_index], pagination = pagination, category = category, state = state)
+
 
 @app.route("/placeinfo/<placename>")
 def placeinfo(placename):
