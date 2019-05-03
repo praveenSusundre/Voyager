@@ -4,6 +4,7 @@ import pandas as pd
 from math import ceil
 from bs4 import BeautifulSoup
 from requests import get
+from googlesearch import search
 
 app = Flask(__name__)
 
@@ -257,9 +258,22 @@ def placeinfo(placename):
     for place in hotel1['property_name']:
         h_names.append(place)
 
+    # to search
+    query = names + ' ' + city + ' reviews'
+
+    for j in search(query, tld="co.in", num=10, stop=1, pause=2):
+        print(j)
+
+    page = get(str(j))
+
+    soup = BeautifulSoup(page.content, 'html.parser')
+    title = soup.find_all(class_='quote')
+    rev = soup.find_all(class_='partial_entry')
+
+
     return render_template('moreinfo.html', rates = rates, places = places, images = images,
                             names = names, city = city, same_city = name, image = img
-                            , h_names = h_names)
+                            , h_names = h_names, title = title, rev = rev)
 
 if __name__ == "__main__":
     app.run(debug=True)

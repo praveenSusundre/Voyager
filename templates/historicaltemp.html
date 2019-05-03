@@ -25,7 +25,8 @@
   <style>
 .parallax {
   /* The image used */
-  background-image: url("{{url_for('static', filename='img/bg-signup.jpg')}}");
+  background-color: white;
+  background-image: url("{{url_for('static', filename='img/')}}");
 
   /* Set a specific height */
   height: 100%;
@@ -100,7 +101,7 @@ span.stars span {
 
     <div class="w3-container">
       <img src="{{ images[i] }}" alt="Avatar" class="w3-round w3-margin-right w3-margin-left w3-margin-top w3-margin-bottom" style="width:200px">
-      <h4>{{ names[i] }}</h4>   
+      <h4>{{ names[i] }}</h4>
       <h4>{{ states[i] }}</h4>
       <h4>{{ rates[i] }}</h4>
       <p class="w3-margin-top">{{ places[i] }}</p><br>
