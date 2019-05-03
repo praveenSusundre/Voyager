@@ -20,7 +20,18 @@
 
   <!-- Custom styles for this template -->
   <link href="{{url_for('static', filename = 'css/clean-blog.min.css')}}" rel="stylesheet">
-
+  <style>
+  .card-img-top {
+  width: 100%;
+  height: 10vw;
+  object-fit: cover;
+}
+.card-title{
+  width: 100%;
+  height: 6vw;
+  object-fit: cover;
+}
+  </style>
 </head>
 
 <body>
@@ -123,6 +134,48 @@
     </div>
     </div>
     </div>
+
+
+        <br>
+        <br>
+        <br>
+        <div class="post-preview">
+
+            <h2 class="post-title">
+              Best Hotels in <span style="text-transform: capitalize">{{city}}</span>
+            </h2>
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+    <div class="col-lg-4">
+    <div class="card" >
+      <img class="card-img-top" src="{{fetch_img(h_names[1]+' '+city)}}" alt="Card image cap">
+      <div class="card-body">
+        <center><h3 class="card-title">{{h_names[1]}}</h3><a href="{{url_for('placeinfo', placename = same_city[1])}}" class="btn btn-primary btn-xs">Show More</a></center>
+      </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="card">
+      <img class="card-img-top" src="{{fetch_img(h_names[2]+' '+city)}}" alt="Card image cap">
+      <div class="card-body">
+        <center><h3 class="card-title">{{h_names[2]}}</h3><a href="{{url_for('placeinfo', placename = same_city[2])}}" class="btn btn-primary btn-xs">Show More</a></center>
+      </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="card">
+      <img class="card-img-top" src="{{fetch_img(h_names[3]+' '+city)}}" alt="Card image cap" >
+      <div class="card-body">
+        <center><h3 class="card-title">{{h_names[3]}}</h3><a href="{{url_for('placeinfo', placename = same_city[3])}}" class="btn btn-primary btn-xs">Show More</a></center>
+      </div>
+    </div>
+    </div>
+    </div>
+
+</div>
 
   {% endblock %}
   <!-- Footer -->

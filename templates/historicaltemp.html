@@ -36,6 +36,17 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+span.stars, span.stars span {
+    display: block;
+    background: url("http://www.ulmanen.fi/stuff/stars.png") 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
 </style>
 
 </head>
@@ -89,7 +100,7 @@
 
     <div class="w3-container">
       <img src="{{ images[i] }}" alt="Avatar" class="w3-round w3-margin-right w3-margin-left w3-margin-top w3-margin-bottom" style="width:200px">
-      <h4>{{ names[i] }}</h4>
+      <h4>{{ names[i] }}</h4>   
       <h4>{{ states[i] }}</h4>
       <h4>{{ rates[i] }}</h4>
       <p class="w3-margin-top">{{ places[i] }}</p><br>
@@ -146,6 +157,8 @@
 
   <!-- Custom scripts for this template -->
   <script src="{{url_for('static', filename='js/grayscale.min.js')}}"></script>
+
+  <script src="{{url_for('static', filename='js/rating.js')}}"></script>
 
 </body>
 

@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 import json
 import pandas as pd
 from math import ceil
+from bs4 import BeautifulSoup
+from requests import get
 
 app = Flask(__name__)
 
@@ -46,6 +48,25 @@ def sender(page, length):
             return 0
         else:
             return val
+
+def fetch_img(query):
+
+    image_type="ActiOn"
+    query= query.split()
+    query='+'.join(query)
+    url="https://www.google.co.in/search?q="+query+"&source=lnms&tbm=isch"
+
+    header={'User-Agent':"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"
+    }
+
+    soup = BeautifulSoup(get(url,headers=header).text,'html.parser')
+
+    a = soup.find("div",{"class":"rg_meta"})
+    link =json.loads(a.text)["ou"]
+
+    return link
+
+app.jinja_env.globals['fetch_img'] = fetch_img
 
 def url_for_other_page(page, category, state):
     args = request.view_args.copy()
@@ -200,6 +221,8 @@ def placeinfo(placename):
     name = []
     rates = []
     states = []
+    h_names = []
+
 
     places = pd.read_json('places_final.json', orient='columns')
     places1 = pd.read_json('places_final.json', orient='columns')
@@ -228,9 +251,15 @@ def placeinfo(placename):
     for place in same_city1['place_image']:
         img.append(place)
 
+    hotel = pd.read_csv('Hotel.csv')
+    hotel1 = hotel[hotel['city'] == city.capitalize()]
+
+    for place in hotel1['property_name']:
+        h_names.append(place)
 
     return render_template('moreinfo.html', rates = rates, places = places, images = images,
-                            names = names, city = city, same_city = name, image = img)
+                            names = names, city = city, same_city = name, image = img
+                            , h_names = h_names)
 
 if __name__ == "__main__":
     app.run(debug=True)
